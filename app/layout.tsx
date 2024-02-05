@@ -1,12 +1,28 @@
 import type { Metadata } from "next";
 import { Urbanist } from "next/font/google";
 import "./globals.css";
+import { Footer } from "@/components/footer";
+import { Navbar } from "@/components/navbar";
+import { ModalProvider } from "@/providers/modal-provider";
+import { Toaster } from "sonner";
 
 const inter = Urbanist({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-    title: "Store",
-    description: "Shopify Store",
+    title: "Rogue | Online Shopping for Women, Men Fashion & Lifestyle",
+    keywords : [
+                    "Online fashion store India",
+                    "Trendy clothing for men and women",
+                    "Fashionable footwear online",
+                    "Best online fashion deals",
+                    "Stylish lifestyle products",
+                    "Easy returns and exchanges fashion",
+                    "India's top fashion destination",
+                    "Men's and women's fashion online",
+                    "Latest fashion trends India",
+                    "Online shopping for clothing and footwear"
+                ],
+    description: "Online Shopping Site for Fashion & Lifestyle in India. Elevate your style with our diverse collection of footwear and clothing for men and women. Enjoy easy returns and exchanges for a seamless online shopping experience.",
 };
 
 export default function RootLayout({
@@ -16,7 +32,13 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={inter.className}>{children}</body>
+            <body className={inter.className}>
+                <ModalProvider/>
+                <Toaster position="bottom-center" />
+                <Navbar />
+                {children}
+                <Footer />
+            </body>
         </html>
     );
 }
