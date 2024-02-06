@@ -4,6 +4,8 @@ import * as z from "zod";
 import { db } from "@/lib/db";
 import bcrypt from "bcryptjs";
 import { RegistrationSchema } from "@/schemas/registration.schema";
+import { generateVerificationToken } from "@/lib/tokens";
+import { sendVerificationEmail } from "@/lib/mail";
 
 export const register = async ( data : z.infer<typeof RegistrationSchema> )  => {
     try {
@@ -38,7 +40,15 @@ export const register = async ( data : z.infer<typeof RegistrationSchema> )  => 
             }
         });
 
-        // TODO email verification
+        const verificationToken = await generateVerificationToken(email);
+
+        if (!verificationToken) {
+            return {
+                error : "Internal server error"
+            }
+        }
+
+        await sendVerificationEmail(email, verificationToken.token, name);
 
         return {
             success : "Verification email has been sent"

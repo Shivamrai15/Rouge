@@ -24,8 +24,6 @@ import { LoginSchema } from "@/schemas/login.schema";
 export const LoginForm = () => {
 
     const [ loading, setLoading ] = useState(false);
-    const [ error, setError ] = useState(false);
-    const [ success, setSuccess ] = useState(false);
 
     const form  = useForm<z.infer<typeof LoginSchema>>({
         resolver : zodResolver(LoginSchema),
@@ -43,6 +41,9 @@ export const LoginForm = () => {
             
             if (response.error) {
                 toast.error(response.error);
+            }
+            if (response.info) {
+                toast.info(response.info);
             }
         } catch (error) {
             

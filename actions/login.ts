@@ -7,6 +7,8 @@ import { LoginSchema } from "@/schemas/login.schema";
 import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
 import { signIn } from "@/auth";
 import { AuthError } from "next-auth";
+import { generateVerificationToken } from "@/lib/tokens";
+import { sendVerificationEmail } from "@/lib/mail";
 
 export const login = async ( data : z.infer<typeof LoginSchema> ) => {
     try {
@@ -40,12 +42,24 @@ export const login = async ( data : z.infer<typeof LoginSchema> ) => {
             }
         }
 
-        // TODO Email Verification
+        if (!user.emailVerified) {
+            const verificationToken = await generateVerificationToken(user.email);
+            if (!verificationToken) {
+                return {
+                    error : "Internal server error"
+                }
+            }
+
+            await sendVerificationEmail( user.email, verificationToken.token, user?.name || "User" );
+            return {
+                info : "Verification email has been send"
+            }
+        }
 
         const value = await signIn("credentials", {
             email,
             password,
-            // redirectTo: DEFAULT_LOGIN_REDIRECT,
+            redirectTo: DEFAULT_LOGIN_REDIRECT,
         });
 
         console.log(value);

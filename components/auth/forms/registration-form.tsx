@@ -24,8 +24,6 @@ import { toast } from "sonner";
 export const RegistrationForm = () => {
 
     const [ loading, setLoading ] = useState(false);
-    const [ error, setError ] = useState(false);
-    const [ success, setSuccess ] = useState(false);
 
     const form  = useForm<z.infer<typeof RegistrationSchema>>({
         resolver : zodResolver(RegistrationSchema),
