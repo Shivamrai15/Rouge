@@ -19,6 +19,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { FormWrapper } from "@/components/auth/utils/form-wrapper";
 import { LoginSchema } from "@/schemas/login.schema";
+import Link from "next/link";
 
 
 export const LoginForm = () => {
@@ -100,6 +101,12 @@ export const LoginForm = () => {
                                         />
                                     </FormControl>
                                     <FormMessage className="w-full px-2 py-2 bg-rose-200/70 rounded-md"/>
+                                    <Link
+                                        href = "/forget-password"
+                                        className="text-muted-foreground font-semibold text-sm mt-4"
+                                    >
+                                        Forget password?
+                                    </Link>
                                 </FormItem>
                             )}
                         />
