@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Heart } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useCart } from "@/hooks/use-cart";
+import { signOut } from "next-auth/react";
 
 export const NavbarActions = () => {
 
@@ -21,6 +22,7 @@ export const NavbarActions = () => {
                 size="icon"
                 variant="outline"
                 className="border-none"
+                onClick={()=>signOut()}
             >
                 <FaRegUser className="text-zinc-700 h-6 w-6"/>
             </Button>

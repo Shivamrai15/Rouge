@@ -45,7 +45,7 @@ export const LoginForm = () => {
                 toast.error(response.error);
             }
         } catch (error) {
-            toast.error("Something went wrong!");
+            
         } finally {
             setLoading(false);
         }
