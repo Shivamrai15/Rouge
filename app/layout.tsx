@@ -37,12 +37,13 @@ export default async function RootLayout({
 
     return (
         <html lang="en">
+            <link rel="icon" href="/assets/icon.ico" sizes="any" />
             <body className={inter.className}>
                 <SessionProvider
                     session={session}
                 >
                     <ModalProvider/>
-                    <Toaster position="bottom-center" />
+                    <Toaster position="top-right" />
                     <Navbar />
                     {children}
                     <Footer />

@@ -7,11 +7,11 @@ const nextConfig = {
                 protocol : "https",
                 hostname : "res.cloudinary.com",
             }
-        ],
-        experimental: {
-            missingSuspenseWithCSRBailout: false,
-        },
-    }
+        ]
+    },
+    experimental: {
+        missingSuspenseWithCSRBailout: false,
+    },
 };
 
 export default nextConfig;
