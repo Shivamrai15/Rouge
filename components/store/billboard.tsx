@@ -18,7 +18,7 @@ export const Billboard = () => {
             <CarouselContent>
                 <CarouselItem className="aspect-[5/2] w-full relative">
                     <Image 
-                        src="https://res.cloudinary.com/dkaj1swfy/image/upload/v1706765773/xlxkuqvxsrrnbthmqkqe.jpg"
+                        src="/assets/34074844_8128527.svg"
                         alt="Image"
                         fill
                         className="object-cover object-top"

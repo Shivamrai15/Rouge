@@ -1,16 +1,16 @@
 "use client";
 
 import { HiOutlineShoppingBag } from "react-icons/hi";
-import { FaRegUser } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Heart } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useCart } from "@/hooks/use-cart";
-import { signOut } from "next-auth/react";
 import { Product, Wishlist } from "@prisma/client";
 import { useEffect } from "react";
 import { useWishlist } from "@/hooks/use-wishlist";
+import { Account } from "./account";
+import { useSession } from "next-auth/react";
 
 interface NavbarActionsProps {
     wishlistItems : Wishlist & {
@@ -27,6 +27,8 @@ export const NavbarActions = ({
     const { items } = useCart();
     const { createWishlist } = useWishlist();
 
+    const session = useSession();
+
     useEffect(()=>{
         if (wishlistItems) {
             const wishlistProductIds = wishlistItems.products.map((product) => product.productId);
@@ -36,15 +38,10 @@ export const NavbarActions = ({
 
     return (
         <div className="ml-auto flex items-center gap-x-2 ">
-            <Button
-                type="button"
-                size="icon"
-                variant="outline"
-                className="border-none"
-                onClick={()=>signOut()}
-            >
-                <FaRegUser className="text-zinc-700 h-6 w-6"/>
-            </Button>
+            <Account
+                session = {session.status === "authenticated"}
+                name = { session.data?.user?.name || "Guest" }
+            />
             <Button
                 type="button"
                 size="icon"

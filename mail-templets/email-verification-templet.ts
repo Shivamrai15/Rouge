@@ -222,101 +222,6 @@ export const emailVerificationTemplet = ( name : string, url:string ) => {
                 border="0"
                 cellpadding="0"
                 cellspacing="0"
-                class="row row-2"
-                role="presentation"
-                style="mso-table-lspace: 0pt; mso-table-rspace: 0pt"
-                width="100%"
-                >
-                <tbody>
-                    <tr>
-                    <td>
-                        <table
-                        align="center"
-                        border="0"
-                        cellpadding="0"
-                        cellspacing="0"
-                        class="row-content stack"
-                        role="presentation"
-                        style="
-                            mso-table-lspace: 0pt;
-                            mso-table-rspace: 0pt;
-                            border-radius: 0;
-                            color: #000000;
-                            width: 600px;
-                            margin: 0 auto;
-                        "
-                        width="600"
-                        >
-                        <tbody>
-                            <tr>
-                            <td
-                                class="column column-1"
-                                style="
-                                mso-table-lspace: 0pt;
-                                mso-table-rspace: 0pt;
-                                font-weight: 400;
-                                text-align: left;
-                                padding-bottom: 5px;
-                                padding-top: 5px;
-                                vertical-align: top;
-                                border-top: 0px;
-                                border-right: 0px;
-                                border-bottom: 0px;
-                                border-left: 0px;
-                                "
-                                width="100%"
-                            >
-                                <table
-                                border="0"
-                                cellpadding="10"
-                                cellspacing="0"
-                                class="heading_block block-1"
-                                role="presentation"
-                                style="
-                                    mso-table-lspace: 0pt;
-                                    mso-table-rspace: 0pt;
-                                "
-                                width="100%"
-                                >
-                                <tr>
-                                    <td class="pad">
-                                    <h1
-                                        style="
-                                        margin: 0;
-                                        color: #111;
-                                        direction: ltr;
-                                        font-family: 'Permanent Marker', Impact,
-                                            Charcoal, sans-serif;
-                                        font-size: 60px;
-                                        font-weight: 400;
-                                        letter-spacing: normal;
-                                        line-height: 120%;
-                                        text-align: center;
-                                        margin-top: 0;
-                                        margin-bottom: 0;
-                                        mso-line-height-alt: 72px;
-                                        "
-                                    >
-                                        <span class="tinyMce-placeholder"
-                                        >Rouge</span
-                                        >
-                                    </h1>
-                                    </td>
-                                </tr>
-                                </table>
-                            </td>
-                            </tr>
-                        </tbody>
-                        </table>
-                    </td>
-                    </tr>
-                </tbody>
-                </table>
-                <table
-                align="center"
-                border="0"
-                cellpadding="0"
-                cellspacing="0"
                 class="row row-3"
                 role="presentation"
                 style="mso-table-lspace: 0pt; mso-table-rspace: 0pt"
@@ -643,7 +548,7 @@ export const emailVerificationTemplet = ( name : string, url:string ) => {
                                         direction: ltr;
                                         font-family: 'Ubuntu', Tahoma, Verdana,
                                             Segoe, sans-serif;
-                                        font-size: 16px;
+                                        font-size: 12px;
                                         font-weight: 400;
                                         letter-spacing: 0px;
                                         line-height: 120%;
@@ -754,7 +659,7 @@ export const emailVerificationTemplet = ( name : string, url:string ) => {
                                             font-family: 'Cabin', Arial,
                                             'Helvetica Neue', Helvetica,
                                             sans-serif;
-                                            font-size: 19px;
+                                            font-size: 16px;
                                             text-align: center;
                                             mso-border-alt: none;
                                             word-break: keep-all;
@@ -859,7 +764,7 @@ export const emailVerificationTemplet = ( name : string, url:string ) => {
                                         direction: ltr;
                                         font-family: 'Ubuntu', Tahoma, Verdana,
                                             Segoe, sans-serif;
-                                        font-size: 16px;
+                                        font-size: 12px;
                                         font-weight: 400;
                                         letter-spacing: 0px;
                                         line-height: 120%;

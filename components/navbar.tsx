@@ -7,6 +7,7 @@ import { getCategories } from '@/actions/get-categories';
 import { NavbarActions } from './navbar-actions';
 import { cn } from '@/lib/utils';
 import { getWishlistItems } from '@/actions/get-whishlist';
+import { MobileNavbar } from './mobile-nav';
 
 const font = Pacifico({
     weight : ["400"],
@@ -22,6 +23,7 @@ export const Navbar = async() => {
         <header className='shadow-neutral-100 shadow-lg border-b'>
             <Container>
                 <div className='px-4 relative md:px-6 lg:px-8 h-16 flex items-center'>
+                    <MobileNavbar data={data}  />
                     <Link className='ml-4 flex lg:ml-0 gap-x-2'
                         href="/"
                     >
