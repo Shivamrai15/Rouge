@@ -8,9 +8,9 @@ import {
 } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { HiShoppingBag } from "react-icons/hi";
-import { Heart } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { useCart } from "@/hooks/use-cart";
+import { WishlistButton } from "./wishlist-button";
 
 interface ProductDetailsProps {
     data : Product;
@@ -48,7 +48,7 @@ export const ProductDetails = ({
                 <h4 className="font-semibold text-black md:text-xl">
                     Size
                 </h4>
-                <div className="flex items-center justify-center h-12 w-12 rounded-full border text-lg font-semibold hover:border-none text-zinc-800 hover:bg-zinc-600 hover:text-white transition-colors cursor-default">
+                <div className="flex items-center justify-center h-12 min-w-12 px-2 py-2 rounded-full border text-lg font-semibold hover:border-none text-zinc-800 hover:bg-zinc-600 hover:text-white transition-colors cursor-default">
                     {data.size.value}
                 </div>
             </div>
@@ -60,13 +60,9 @@ export const ProductDetails = ({
                     <HiShoppingBag className="mr-4 h-6 w-6"/>
                     ADD TO BAG
                 </Button>
-                <Button
-                    variant="outline"
-                    className="w-full h-14 font-bold text-zinc-700"
-                >
-                    <Heart className="mr-4 h-6 w-6"/>
-                    WISHLIST
-                </Button>
+                <WishlistButton
+                    productId = {data.id}
+                />
             </div>
             <Separator className="my-8"/>
             <div className="max-w-md flex flex-col space-y-6">

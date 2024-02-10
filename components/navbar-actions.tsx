@@ -8,12 +8,31 @@ import { Heart } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useCart } from "@/hooks/use-cart";
 import { signOut } from "next-auth/react";
+import { Product, Wishlist } from "@prisma/client";
+import { useEffect } from "react";
+import { useWishlist } from "@/hooks/use-wishlist";
 
-export const NavbarActions = () => {
+interface NavbarActionsProps {
+    wishlistItems : Wishlist & {
+        products : Product[]
+    } | null
+}
+
+export const NavbarActions = ({
+    wishlistItems
+} : NavbarActionsProps) => {
 
 
     const router = useRouter();
     const { items } = useCart();
+    const { createWishlist } = useWishlist();
+
+    useEffect(()=>{
+        if (wishlistItems) {
+            const wishlistProductIds = wishlistItems.products.map((product) => product.productId);
+            createWishlist(wishlistProductIds);
+        }
+    }, [wishlistItems]);
 
     return (
         <div className="ml-auto flex items-center gap-x-2 ">

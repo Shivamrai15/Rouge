@@ -19,7 +19,7 @@ export const Hero = () => {
                             asChild
                         >
                             <Link
-                                href="/"
+                                href="/category/65c7203e95bb907b5f80cfdf?page=1"
                             >
                                 Discover Now
                             </Link>

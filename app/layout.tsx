@@ -5,6 +5,8 @@ import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import { ModalProvider } from "@/providers/modal-provider";
 import { Toaster } from "sonner";
+import { SessionProvider } from "next-auth/react";
+import { auth } from "@/auth";
 
 const inter = Urbanist({ subsets: ["latin"] });
 
@@ -25,19 +27,26 @@ export const metadata: Metadata = {
     description: "Online Shopping Site for Fashion & Lifestyle in India. Elevate your style with our diverse collection of footwear and clothing for men and women. Enjoy easy returns and exchanges for a seamless online shopping experience.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;
 }>) {
+
+    const session = await auth();
+
     return (
         <html lang="en">
             <body className={inter.className}>
-                <ModalProvider/>
-                <Toaster position="bottom-center" />
-                <Navbar />
-                {children}
-                <Footer />
+                <SessionProvider
+                    session={session}
+                >
+                    <ModalProvider/>
+                    <Toaster position="bottom-center" />
+                    <Navbar />
+                    {children}
+                    <Footer />
+                </SessionProvider>
             </body>
         </html>
     );

@@ -6,6 +6,7 @@ import { MainNav } from './main-nav';
 import { getCategories } from '@/actions/get-categories';
 import { NavbarActions } from './navbar-actions';
 import { cn } from '@/lib/utils';
+import { getWishlistItems } from '@/actions/get-whishlist';
 
 const font = Pacifico({
     weight : ["400"],
@@ -15,6 +16,7 @@ const font = Pacifico({
 export const Navbar = async() => {
 
     const data = await getCategories();
+    const wishlistItems = await getWishlistItems();
 
     return (
         <header className='shadow-neutral-100 shadow-lg border-b'>
@@ -33,7 +35,9 @@ export const Navbar = async() => {
                     <div className='hidden md:block'>
                         <MainNav data={data} />
                     </div>
-                    <NavbarActions />
+                    <NavbarActions
+                        wishlistItems={wishlistItems}
+                    />
                 </div>
             </Container>
         </header>
