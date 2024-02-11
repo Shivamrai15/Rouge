@@ -27,7 +27,7 @@ export const ModalGallery = ({
                 <TabsList className="grid grid-cols-4 gap-4 h-auto bg-white">
                     {
                         images.map((image)=>(
-                            <TabsTrigger value={image.id} className="relative flex aspect-square md:cursor-pointer overflow-hidden">
+                            <TabsTrigger key={image.id} value={image.id} className="relative flex aspect-square md:cursor-pointer overflow-hidden">
                                 <Image
                                         src={image.url}
                                         alt="Image"

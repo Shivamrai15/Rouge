@@ -54,7 +54,7 @@ export const MobileNavbar = ({
                 <div className="py-4">
                     <h2 className="font-bold text-zinc-700">Men</h2>
                     <div className="flex flex-col gap-y-2">
-                        <Accordion collapsible >
+                        <Accordion type="multiple" >
                             <AccordionItem value="item-1">
                                 <AccordionTrigger className="text-sm text-zinc-700 font-semibold">Topwears</AccordionTrigger>
                                 <AccordionContent>
@@ -137,8 +137,8 @@ export const MobileNavbar = ({
                 <div className="py-4">
                     <h2 className="font-bold text-zinc-700">Women</h2>
                     <div className="flex flex-col gap-y-2">
-                        <Accordion collapsible >
-                            <AccordionItem value="item-1">
+                        <Accordion type="multiple" >
+                            <AccordionItem value="item-1" >
                                 <AccordionTrigger className="text-sm text-zinc-700 font-semibold">Topwears</AccordionTrigger>
                                 <AccordionContent>
                                     <div className="w-full flex flex-col px-2 space-y-1">

@@ -15,7 +15,7 @@ export const EmptyCart = () => {
                 />
                 <div className="text-center space-y-1 max-w-sm">
                     <p className="text-zinc-700 font-bold text-lg md:text-xl">Your cart is lighter than a cloud.</p>
-                    <p className="px-4 md:px-0 text-sm text-zinc-600 font-semibold">Whispers of "buy me" echoing in your empty cart? We hear you.</p>
+                    <p className="px-4 md:px-0 text-sm text-zinc-600 font-semibold">Whispers of &quot;buy me&quot; echoing in your empty cart? We hear you.</p>
                 </div>
                 <Button
                     size="lg"

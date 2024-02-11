@@ -30,7 +30,7 @@ export const NavPopover = ({
                     {
                         topwearCategory.map((cat)=>(
                             <li key={cat.id}>
-                                <NavigationMenuLink asChild>
+                                <NavigationMenuLink asChild key={cat.id}>
                                         <Link
                                             href={`/category/${cat.id}?category=${keyValue}&page=1`}
                                             className="font-medium text-zinc-600"
@@ -49,7 +49,7 @@ export const NavPopover = ({
                     {
                         bottomwearCategory.map((cat)=>(
                             <li key={cat.id}>
-                                <NavigationMenuLink asChild>
+                                <NavigationMenuLink asChild key={cat.id}>
                                         <Link
                                             href={`/category/${cat.id}?category=${keyValue}&page=1`}
                                             className="font-medium text-zinc-600"
@@ -68,7 +68,7 @@ export const NavPopover = ({
                     {
                         innerwearCategory.map((cat)=>(
                             <li key={cat.id}>
-                                <NavigationMenuLink asChild>
+                                <NavigationMenuLink asChild key={cat.id}>
                                         <Link
                                             href={`/category/${cat.id}?category=${keyValue}&page=1`}
                                             className="font-medium text-zinc-600"
@@ -87,7 +87,7 @@ export const NavPopover = ({
                     {
                         footwearCategory.map((cat)=>(
                             <li key={cat.id}>
-                                <NavigationMenuLink asChild>
+                                <NavigationMenuLink asChild key={cat.id}>
                                         <Link
                                             href={`/category/${cat.id}?category=${keyValue}&page=1`}
                                             className="font-medium text-zinc-600"

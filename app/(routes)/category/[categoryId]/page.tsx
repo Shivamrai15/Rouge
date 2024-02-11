@@ -1,4 +1,3 @@
-import { Metadata } from "next";
 import { getCategoryById } from "@/actions/get-category";
 import { getColors } from "@/actions/get-colors";
 import { getProducts } from "@/actions/get-products";
@@ -23,25 +22,6 @@ interface CategoryPageProps {
         page : string;
     }
 }
-
-export async function generateMetaData (
-    { params, searchParams } : CategoryPageProps,
-) : Promise<Metadata> {
-
-    const gender = searchParams.category;
-    const category = await getCategoryById(params.categoryId);
-
-    return {
-        title : `Buy ${gender[0]+gender.slice(1)} ${category.name} Online at India's best store | Rouge`,
-        keywords : [
-            category.name,
-            category.classification.toString().toLowerCase(),
-            `${gender[0]+gender.slice(1)} ${category.name}`
-        ],
-        description : `Explore a stylish array of ${gender.toLowerCase()}'s ${category.name} online at Rouge. Elevate your wardrobe with trendy designs, unmatched quality, and hassle-free shopping. Redefine your style effortlessly. Shop now!`
-    }
-}
-
 
 const CategoryPage = async({
     params,
