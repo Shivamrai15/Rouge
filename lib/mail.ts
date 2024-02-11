@@ -2,7 +2,7 @@ import { emailVerificationTemplet } from "@/mail-templets/email-verification-tem
 import { resetPasswordTemplet } from "@/mail-templets/reset-password-templet";
 import nodemailer from "nodemailer";
 
-const domain = process.env.DOMAIN;
+const domain = process.env.NEXT_PUBLIC_DOMAIN;
 
 const transporter = nodemailer.createTransport({
     service : "gmail",
