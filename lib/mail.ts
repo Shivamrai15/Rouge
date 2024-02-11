@@ -2,8 +2,6 @@ import { emailVerificationTemplet } from "@/mail-templets/email-verification-tem
 import { resetPasswordTemplet } from "@/mail-templets/reset-password-templet";
 import nodemailer from "nodemailer";
 
-const domain = process.env.NEXT_PUBLIC_DOMAIN;
-
 const transporter = nodemailer.createTransport({
     service : "gmail",
     auth: {
@@ -19,6 +17,7 @@ export const sendVerificationEmail = async(
 )=>{
     try {
 
+        const domain =  process.env.NEXT_PUBLIC_DOMAIN;
         const confirmUri = `${domain}/token-verification?token=${token}`;
 
         const emailTemplet = emailVerificationTemplet(name, confirmUri)
@@ -43,6 +42,7 @@ export const sendPasswordResetEmail = async(
 ) => {
     try {
         
+        const domain =  process.env.NEXT_PUBLIC_DOMAIN;
         const confirmUri = `${domain}/reset-password?token=${token}`;
         const emailTemplet = resetPasswordTemplet(name, confirmUri);
 
