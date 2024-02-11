@@ -1,4 +1,4 @@
-import { signIn } from "@/auth";
+import { signIn } from "next-auth/react";
 import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
 
 import { Separator } from "@/components/ui/separator";
@@ -10,7 +10,7 @@ export const Socials = () => {
 
     const handleOauthLogin = async () =>{
         await signIn("google", {
-            callbackUrl: DEFAULT_LOGIN_REDIRECT,
+            callbackUrl : DEFAULT_LOGIN_REDIRECT
         });
     }
 
