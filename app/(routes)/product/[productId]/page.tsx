@@ -5,9 +5,27 @@ import { ProductDetails } from "@/components/store/product-details";
 import { ProductList } from "@/components/store/product-list";
 import { Container } from "@/components/ui/container";
 import { redirect } from "next/navigation";
+import { Metadata, ResolvingMetadata } from "next";
 
 interface ProductPageProps {
     params : { productId : string  }
+}
+
+export async function generateMetadata(
+    { params }: ProductPageProps,
+    parent: ResolvingMetadata
+): Promise<Metadata> {
+
+    const product = await getProductById(params.productId);
+    const previousImages = (await parent).openGraph?.images || []
+   
+    return {
+        title: `Buy ${product.name} ${product.about}`,
+        description : `${product.description}`,
+        openGraph: {
+            images: [product.productImages[0].url, ...previousImages],
+        },
+    }
 }
 
 const ProductPage = async({

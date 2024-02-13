@@ -16,7 +16,7 @@ const CartPage = () => {
     return (
         <div className={cn(
             "bg-white min-h-full", 
-            items.length === 0 && "h-full"
+            items.length === 0 && "h-[90vh]"
         )}>
             {
                 items.length === 0 && (

@@ -8,6 +8,7 @@ import { NoResults } from "@/components/store/no-results";
 import { ProductCard } from "@/components/store/product-card";
 import { MobileFilters } from "./_components/mobile-filters";
 import { PaginationComponent } from "./_components/pagination";
+import { Metadata, ResolvingMetadata } from "next";
 
 
 interface CategoryPageProps {
@@ -20,6 +21,23 @@ interface CategoryPageProps {
         limit : string;
         category : "MEN" | "WOMEN";
         page : string;
+    }
+}
+
+export async function generateMetadata(
+    { params, searchParams }: CategoryPageProps,
+    parent: ResolvingMetadata
+): Promise<Metadata> {
+
+    const category = await getCategoryById(params.categoryId);
+    const previousImages = (await parent).openGraph?.images || []
+   
+    return {
+        title: `Buy ${searchParams.category ? (searchParams.category[0].toUpperCase() + searchParams.category.slice(1).toLowerCase()+"'s") : ""} ${category.name} Online | Get Deals, Shop Now!`,
+        description : `Dress to impress: Latest styles & trends for every occasion. Shop ${searchParams.category ? (searchParams.category[0].toUpperCase() + searchParams.category.slice(1).toLowerCase()+"'s") : ""} ${category.name}`,
+        openGraph: {
+            images: [category.billboardId.imageUrl, ...previousImages],
+        },
     }
 }
 
