@@ -37,7 +37,16 @@ export async function generateMetadata(
         description : `Dress to impress: Latest styles & trends for every occasion. Shop ${searchParams.category ? (searchParams.category[0].toUpperCase() + searchParams.category.slice(1).toLowerCase()+"'s") : ""} ${category.name}`,
         openGraph: {
             images: [category.billboardId.imageUrl, ...previousImages],
+            type : "website",
         },
+        twitter : {
+            card: 'summary_large_image',
+            title: `Buy ${searchParams.category ? (searchParams.category[0].toUpperCase() + searchParams.category.slice(1).toLowerCase()+"'s") : ""} ${category.name} Online | Get Deals, Shop Now!`,
+            description : `Dress to impress: Latest styles & trends for every occasion. Shop ${searchParams.category ? (searchParams.category[0].toUpperCase() + searchParams.category.slice(1).toLowerCase()+"'s") : ""} ${category.name}`,
+            images: [category.billboardId.imageUrl], 
+        },
+        category : "ecommerce"
+        
     }
 }
 

@@ -23,8 +23,24 @@ export async function generateMetadata(
         title: `Buy ${product.name} ${product.about}`,
         description : `${product.description}`,
         openGraph: {
-            images: [product.productImages[0].url, ...previousImages],
+            images: [{
+                url : product.productImages[0].url,
+                height : 1200,
+                width : 900
+            }, ...previousImages],
+            type : "website",
         },
+        twitter : {
+            card: 'summary_large_image',
+            title: `Buy ${product.name} ${product.about}`,
+            description: `${product.description}`,
+            images: [{
+                url : product.productImages[0].url,
+                height : 1200,
+                width : 900
+            }], 
+        },
+        category : "ecommerce"
     }
 }
 
