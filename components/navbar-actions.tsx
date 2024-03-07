@@ -56,7 +56,7 @@ export const NavbarActions = ({
                 size="icon"
                 variant="outline"
                 className="relative group border-none"
-                onClick={() => router.push("/cart")}
+                onClick={() => router.push("/checkout/cart")}
             >
                 <HiOutlineShoppingBag className="text-zinc-700 h-6 w-6"/>
                 <Badge className="absolute z-10 -right-2 -top-2 text-xs p-[4px] px-[7px] bg-zinc-700 group-hover:bg-zinc-600">

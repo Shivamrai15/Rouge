@@ -13,7 +13,7 @@ const CartLayout = ({
     children
 } : CartLayoutProps) => {
     return (
-        <div className="min-h-full">
+        <div>
             { children }
         </div>
     )

@@ -27,7 +27,7 @@ const CartPage = () => {
                 items.length !== 0 && (
                     <Container>
                         <div className="px-4 sm:px-6 lg:px-8 xl:px-24 h-full">
-                            <div className="mt-12 lg:grid lg:grid-cols-12 lg:items-start gap-x-12">
+                            <div className="my-12 lg:grid lg:grid-cols-12 lg:items-start gap-x-12 ">
                                 <div className="lg:col-span-7">
                                     <ul className="space-y-4">
                                         {
@@ -40,7 +40,7 @@ const CartPage = () => {
                                         }
                                     </ul>
                                 </div>
-                                <div className="flex flex-col gap-y-8 w-full sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8 mt-16">
+                                <div className="flex flex-col gap-y-8 w-full lg:col-span-5 lg:mt-0 mt-16">
                                     <Summary />
                                     <Hero />
                                 </div>

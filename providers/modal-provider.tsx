@@ -2,6 +2,10 @@
 
 import { useEffect, useState } from "react";
 import { PreviewModal } from "@/components/modals/preview-modal";
+import { AddressModal } from "@/components/modals/address-modal";
+import { UpdateAddressModal } from "@/components/modals/update-address-modal";
+import { SuccessModal } from "@/components/modals/success-modal";
+import { ErrorModal } from "@/components/modals/error-modal";
 
 export const ModalProvider = () => {
 
@@ -18,6 +22,10 @@ export const ModalProvider = () => {
     return (
         <>
             <PreviewModal/>
+            <AddressModal/>
+            <UpdateAddressModal/>
+            <SuccessModal/>
+            <ErrorModal/>
         </>
     )
 }

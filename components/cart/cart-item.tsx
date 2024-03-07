@@ -30,7 +30,11 @@ export const CartItem = ({
         const formattedData : CartSelectedItem = {
             id : data.id,
             price : data.price,
-            quantity
+            quantity,
+            image : data.productImages[0].url,
+            about : data.about,
+            name : data.name,
+            size : data.size.value
         }
         selectItem(formattedData);
     }

@@ -14,7 +14,13 @@ model User {
   emailVerified DateTime?
   image         String?
   password      String?
+  dob           DateTime?
+  mobileNumber  String?
   accounts      Account[]
+  orders        Order[]
+  addresses     Address[]
+  comments      Comment[]
+
 }
 
 model Account {
@@ -34,6 +40,23 @@ model Account {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
+}
+
+model Address {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId      String   @db.ObjectId
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  isDefault   Boolean  @default(true)
+  name        String
+  phoneNumber String
+  zipCode     Int
+  address     String
+  landmark    String
+  town        String
+  district    String
+  state       String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 model VerificationToken {
@@ -56,7 +79,7 @@ model ResetPasswordToken {
 
 model Wishlist {
   id        String    @id @default(auto()) @map("_id") @db.ObjectId
-  userId    String    @db.ObjectId @unique
+  userId    String    @unique @db.ObjectId
   products  Product[]
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
@@ -71,4 +94,68 @@ model Product {
   updatedAt  DateTime @updatedAt
 
   @@unique([wishlistId, productId])
+}
+
+model Order {
+  id           String         @id @default(auto()) @map("_id") @db.ObjectId
+  isPaid       Boolean        @default(false)
+  userId       String         @db.ObjectId
+  user         User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  couponId     String?        @db.ObjectId
+  orderProduct OrderProduct[]
+  shippingId   String         @db.ObjectId
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+
+  @@index([userId])
+}
+
+model Comment {
+  id             String       @id @default(auto()) @map("_id") @db.ObjectId
+  comment        String?
+  star           Int?
+  productId      String       @db.ObjectId
+  userId         String       @db.ObjectId
+  username       String
+  user           User         @relation(fields: [userId], references: [id])
+  orderProductId String       @unique @db.ObjectId
+  order          OrderProduct @relation(fields: [orderProductId], references: [id], onDelete: Cascade)
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+
+  @@unique([userId, productId, orderProductId])
+}
+
+
+model OrderProduct {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  productId    String   @db.ObjectId
+  name         String
+  about        String
+  size         String
+  productImage String
+  isCancelled  Boolean  @default(false)
+  quantity     Int
+  comment      Comment?
+  orderId      String   @db.ObjectId
+  order        Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([orderId])
+}
+
+model ShippingAddress {
+  id           String @id @default(auto()) @map("_id") @db.ObjectId
+  name         String
+  mobileNumber String
+  zipCode      Int
+  address      String
+  landmark     String
+  town         String
+  district     String
+  state        String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

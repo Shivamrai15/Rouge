@@ -9,8 +9,8 @@ export const EmptyCart = () => {
             <div className="flex flex-col items-center gap-y-8">
                 <Image
                     src="/assets/FX13_bag.svg"
-                    height={120}
-                    width={120}
+                    height={80}
+                    width={80}
                     alt="Shopping Bag"
                 />
                 <div className="text-center space-y-1 max-w-sm">

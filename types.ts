@@ -76,4 +76,8 @@ export interface CartSelectedItem {
     id :  string;
     quantity : number;
     price : number;
+    image : string;
+    name : string;
+    about : string;
+    size : string;
 }

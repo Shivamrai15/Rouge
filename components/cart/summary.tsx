@@ -1,19 +1,28 @@
 "use client";
 
 import axios from "axios";
-import { useSearchParams } from "next/navigation";
+import { toast } from "sonner";
+import { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
+import { usePathname, useSearchParams, useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import { formatter } from "@/lib/utils";
 import { Separator } from "@/components/ui/separator";
 import { useCheckout } from "@/hooks/use-checkout";
-import { useEffect, useState } from "react";
-import { toast } from "sonner";
+import { useCheckoutAddress } from "@/hooks/use-checkout-address";
+import { usePaymentSuccessErrorModal } from "@/hooks/use-payment-success-error-modal";
 
 export const Summary = () => {
     
+    const router = useRouter();
+    const pathname = usePathname();
     const searchParams = useSearchParams();
+    const session = useSession();
+    const { address } = useCheckoutAddress();
+
     const { checkOutItems } = useCheckout();
+    const { onOpen } = usePaymentSuccessErrorModal();
     const [ loading, setLoading ] = useState(false);
 
     const getTotalAmount = ()=>{
@@ -23,14 +32,25 @@ export const Summary = () => {
         return amount;
     }
 
+    const updateOrder = async( id: string ) => {
+        try {
+            const order = await axios.patch(`/api/order/${id}`, { isPaid : true });
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
     useEffect(() => {
 
-        if ( searchParams.get("success") ){
-            toast.success("Payment Completed")
+        if ( searchParams.get("id") ){
+            const orderId = searchParams.get("id");
+            updateOrder(orderId!).then(()=>{
+                onOpen("success")
+            })
         }
 
         if (searchParams.get("cancelled")){
-            toast.error("Something went wrong!")
+            onOpen("error");
         }
 
     }, [searchParams]);
@@ -38,12 +58,34 @@ export const Summary = () => {
     const onCheckOut = async () => {
         try {
 
+            if (session.status === "unauthenticated") {
+                router.push("/login");
+                return;
+            }
+
+            if (pathname.includes("/checkout/cart")) {
+                router.push("/checkout/address");
+                return;
+            }
+
+            if ( !address ) {
+                return;
+            }
+
             setLoading(true);
+            const order = await axios.post(`/api/v1/order`, {
+                products : checkOutItems, address
+            });
+
+            const orderId = order.data.orderId
+            console.log("OrderId", orderId)
+
             const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`, {
                 products : checkOutItems.map((item)=>({
                     id : item.id,
                     quantity : item.quantity
-                }))
+                })),
+                orderId : orderId
             });
     
             window.location = response.data.url;
@@ -57,7 +99,7 @@ export const Summary = () => {
 
     return (
         <div className="rounded-lg bg-gray-50 px-4 py-6">
-            <h2 className="text-lg md:text-xl font-bold text-zinc-700">
+            <h2 className="text-lg md:text-xl font-bold text-zinc-800">
                 Order Summary
             </h2>
             <div className="mt-6 space-y-4 border-t">
@@ -97,10 +139,10 @@ export const Summary = () => {
             <Button 
                 size="lg"
                 disabled = {loading}
-                className="font-semibold mt-6"
+                className="font-semibold mt-6 w-full"
                 onClick={onCheckOut}
             >
-                PLACE ORDER
+                {pathname === "/checkout/cart" ? "CONTINUE" : "PLACE ORDER"}
             </Button>
         </div>
     );

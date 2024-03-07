@@ -43,7 +43,7 @@ export default async function RootLayout({
                     session={session}
                 >
                     <ModalProvider/>
-                    <Toaster position="top-right" />
+                    <Toaster position="bottom-right" />
                     <Navbar />
                     {children}
                     <Footer />
