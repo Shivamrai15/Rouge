@@ -1,4 +1,4 @@
-import { Product, ProductType } from "@/types";
+import { Product } from "@/types";
 import qs from "query-string";
 
 
@@ -12,6 +12,7 @@ interface Query {
     limit? : string;
     page? : string;
     type? : "MEN" | "WOMEN" | "BEAUTY" | string ;
+    price? : string;
 }
 
 export const getProducts = async (query : Query) : Promise<Product[]> => {
@@ -25,6 +26,7 @@ export const getProducts = async (query : Query) : Promise<Product[]> => {
             isFeatured : query.isFeatured,
             limit : query.limit,
             type : query.type,
+            price : query.price,
             page : query.page
         }
     });

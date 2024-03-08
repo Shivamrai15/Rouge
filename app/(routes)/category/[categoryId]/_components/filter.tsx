@@ -1,7 +1,7 @@
 "use client";
 
 import qs from "query-string";
-import { Color, Size } from "@/types";
+import { Color, PriceRange, Size } from "@/types";
 import { useSearchParams, useRouter } from "next/navigation";
 import { Separator } from "@/components/ui/separator";
 import { Checkbox } from "@/components/ui/checkbox"
@@ -11,7 +11,7 @@ import { useFilter } from "@/hooks/use-filter";
 interface FilterProps {
     valueKey : string;
     name : string;
-    data : (Size | Color )[]
+    data : (Size | Color | PriceRange )[]
 }
 
 export const Filter = ({
@@ -52,10 +52,10 @@ export const Filter = ({
 
     return (
         <div className="mb-8">
-            <h3 className="text-lg font-semibold text-zinc-600">
+            <h3 className="font-semibold text-zinc-600">
                 {name}
             </h3>
-            <Separator className="my-4"/>
+            <Separator className="mb-4 mt-1.5"/>
             <div className="flex flex-col gap-3">
                 {
                     data.map((filter)=>(

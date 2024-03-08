@@ -24,9 +24,6 @@ export const WishlistButton = ({
     const [ loading, setLoading ] = useState(false);
     const { wishlistItems, addWishlistItem } = useWishlist();
 
-    console.log("WishlistItems", wishlistItems);
-    console.log("ProductId", productId);
-
     const handleAddWishlistItem = async() => {
         try {
             setLoading(true);

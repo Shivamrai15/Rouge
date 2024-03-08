@@ -13,7 +13,7 @@ const LoadingPage = () => {
                         <div className="hidden lg:block lg:border-r">
                             <Skeleton className="w-20 h-6 mb-5 rounded-md bg-zinc-200" />
                             <FilterSkeleton/>
-                            <Skeleton className="w-20 h-6 mb-5 rounded-md bg-zinc-200" />
+                            <FilterSkeleton/>
                             <FilterSkeleton/>
                         </div>
                         <div className="mt-6 lg:col-span-4 lg:mt-4">

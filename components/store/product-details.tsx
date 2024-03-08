@@ -67,7 +67,7 @@ export const ProductDetails = ({
             <Separator className="my-8"/>
             <div className="max-w-md flex flex-col space-y-6">
                 <div className="space-y-2">
-                    <h4 className="font-semibold text-black md:text-xl">Product Details</h4>
+                    <h4 className="font-semibold text-zinc-800 md:text-xl">Product Details</h4>
                     <p className="text-zinc-600">
                         {data.description}
                     </p>
@@ -75,7 +75,7 @@ export const ProductDetails = ({
                 {
                     data.sizeAndFit.length !==0 && (
                         <div>
-                            <h4 className="font-semibold text-black md:text-xl mb-2">Size & Fit</h4>
+                            <h4 className="font-semibold text-zinc-800 md:text-xl mb-2">Size & Fit</h4>
                             {
                                 data.sizeAndFit.map((item, index)=>(
                                     <p key={index} className="text-zinc-600">
@@ -89,7 +89,7 @@ export const ProductDetails = ({
                 {
                     data.materialAndCare.length !=0 && (
                         <div >
-                            <h4 className="font-semibold text-black md:text-xl mb-2">Material & Care</h4>
+                            <h4 className="font-semibold text-zinc-800 md:text-xl mb-2">Material & Care</h4>
                             {
                                 data.materialAndCare.map((item, index)=>(
                                     <p key={index} className="text-zinc-600">

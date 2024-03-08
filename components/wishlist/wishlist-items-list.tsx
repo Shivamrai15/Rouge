@@ -29,7 +29,6 @@ export const WishlistItemsList = ({
             await axios.delete(`/api/v1/wishlist/${productId}`);
             router.refresh();
         } catch (error) {
-            console.log(error);
         }
     }
 

@@ -9,6 +9,7 @@ import { ProductCard } from "@/components/store/product-card";
 import { MobileFilters } from "./_components/mobile-filters";
 import { PaginationComponent } from "./_components/pagination";
 import { Metadata, ResolvingMetadata } from "next";
+import { PriceRange } from "@/types";
 
 
 interface CategoryPageProps {
@@ -21,6 +22,7 @@ interface CategoryPageProps {
         limit : string;
         category : "MEN" | "WOMEN";
         page : string;
+        price : string;
     }
 }
 
@@ -30,7 +32,7 @@ export async function generateMetadata(
 ): Promise<Metadata> {
 
     const category = await getCategoryById(params.categoryId);
-    const previousImages = (await parent).openGraph?.images || []
+    const previousImages = (await parent).openGraph?.images || [];
    
     return {
         title: `Buy ${searchParams.category ? (searchParams.category[0].toUpperCase() + searchParams.category.slice(1).toLowerCase()+"'s") : ""} ${category.name} Online | Get Deals, Shop Now!`,
@@ -62,6 +64,7 @@ const CategoryPage = async({
         colorId : searchParams.colorId,
         sizeId : searchParams.sizeId,
         page : searchParams.page,
+        price : searchParams.price,
         limit : "12"
     });
 
@@ -70,6 +73,14 @@ const CategoryPage = async({
     const sizes = await getSizes();
     const colors = await getColors();
     const filteredSizes = sizes.filter((size) => category.classification.toString().includes(size.name));
+
+    const priceRange : PriceRange[] = [
+        { id : "0-500", name : "Rs. 0 to Rs. 500", value : "0-500" },
+        { id : "500-1500", name : "Rs. 500 to Rs. 1500", value : "500-1500" },
+        { id : "1500-3000", name : "Rs. 1500 to Rs. 3000", value : "1500-3000" },
+        { id : "3000-5000", name : "Rs. 3000 to Rs. 5000", value : "3000-5000" },
+        { id : "5000", name : "Above Rs. 5000", value : "5000" },
+    ];
 
     return (
         <div className="bg-white">
@@ -91,6 +102,11 @@ const CategoryPage = async({
                                 valueKey = "colorId"
                                 name = "Colors"
                                 data = {colors}
+                            />
+                            <Filter
+                                valueKey = "price"
+                                name = "Price"
+                                data = {priceRange}
                             />
                         </div>
                         <div className="mt-6 lg:col-span-4 lg:mt-4">

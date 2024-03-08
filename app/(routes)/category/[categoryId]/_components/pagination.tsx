@@ -63,7 +63,7 @@ export const PaginationComponent = ({
                         </PaginationItem>
                     )
                 }
-                <PaginationItem>
+                <PaginationItem className="bg-zinc-100 rounded-md">
                     <PaginationLink
                         href="#"
                     >

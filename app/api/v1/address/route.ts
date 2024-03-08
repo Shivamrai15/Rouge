@@ -3,7 +3,7 @@ import { db } from "@/lib/db";
 import qs from "query-string";
 import { NextResponse } from "next/server";
 import { AddressSchema } from "@/schemas/address.schema";
-import axios from "axios";
+
 
 export async function POST( request: Request ) {
     try {

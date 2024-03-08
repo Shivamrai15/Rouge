@@ -81,3 +81,9 @@ export interface CartSelectedItem {
     about : string;
     size : string;
 }
+
+export interface PriceRange {
+    id : string;
+    value : string;
+    name : string;
+}

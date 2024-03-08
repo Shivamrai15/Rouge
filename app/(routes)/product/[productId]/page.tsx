@@ -6,6 +6,7 @@ import { ProductList } from "@/components/store/product-list";
 import { Container } from "@/components/ui/container";
 import { redirect } from "next/navigation";
 import { Metadata, ResolvingMetadata } from "next";
+import { ProductReviews } from "@/components/store/product-reviews";
 
 interface ProductPageProps {
     params : { productId : string  }
@@ -71,8 +72,9 @@ const ProductPage = async({
                         <div>
                             <Gallery images={product.productImages} />
                         </div>
-                        <div className="mt-10 sm:mt-16 lg:mt-0 md:px-24 lg:px-0">
+                        <div className="mt-10 sm:mt-16 lg:mt-0 md:px-24 lg:px-0 flex flex-col gap-y-10">
                             <ProductDetails data={product} />
+                            <ProductReviews productId = {product.id} />
                         </div>
                     </div>
                 </div>

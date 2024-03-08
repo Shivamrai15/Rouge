@@ -21,7 +21,6 @@ export const NavPopover = ({
     const footwearCategory = category.filter((c) => c.classification.toString() === "FOOTWEAR");
     const innerwearCategory = category.filter((c) => c.classification.toString() === "INNERWEARANDSLEEPWEAR");
     
-    console.log(topwearCategory);
     return (
         <ul className="grid grid-cols-4 items-start gap-x-1 w-[36rem] p-8 ">
             <div className="w-32">
