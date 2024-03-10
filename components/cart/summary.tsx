@@ -34,7 +34,7 @@ export const Summary = () => {
 
     const updateOrder = async( id: string ) => {
         try {
-            const order = await axios.patch(`/api/order/${id}`, { isPaid : true });
+            const order = await axios.patch(`/api/v1/order/${id}`, { isPaid : true });
         } catch (error) {
             console.error(error);
         }
