@@ -13,10 +13,14 @@ import {
     TabsList
 } from "@/components/ui/tabs";
 import { GalleryTab } from "./gallery-tab";
+import { PiShareFatFill } from "react-icons/pi";
+import { useShareModal } from "@/hooks/use-share-modal";
 
 export const Gallery = ({
     images
 } : GalleryProps) => {
+
+    const { onOpen } = useShareModal();
     
     return (
         <Tabs
@@ -47,6 +51,12 @@ export const Gallery = ({
                             fill
                             className="object-cover aspect-[3/4]"
                         />
+                        <div 
+                            className="absolute h-10 w-10 top-4 right-4 bg-white rounded-full flex items-center justify-center md:cursor-pointer"
+                            onClick={onOpen}
+                        >
+                            <PiShareFatFill className="text-zinc-700 h-6 w-6" />
+                        </div>
                     </TabsContent>
                 ))
             }

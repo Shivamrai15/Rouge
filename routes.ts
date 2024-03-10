@@ -1,7 +1,10 @@
 
 export const privateRoutes : string[] = [
     "/orders",
-    "/checkout/address"
+    "/checkout/address",
+    "/my/dashboard",
+    "/my/profile",
+    "/my/address"
 ];
 
 
