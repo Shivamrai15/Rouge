@@ -4,10 +4,12 @@ import { useAddessModal } from "@/hooks/use-address-modal";
 
 interface UserAddressCardProps {
     data : Address[];
+    label? : boolean
 }
 
 export const UserAddressCard = ({
-    data
+    data,
+    label
 } : UserAddressCardProps ) => {
 
     const { onOpen } = useAddessModal();
@@ -18,7 +20,7 @@ export const UserAddressCard = ({
     return (
         <div className="p-4 w-full rounded-sm space-y-6">
             {
-                data.length > 1 && (
+                data.length > 1 && !label && (
                     <h3 className="text-lg md:text-xl font-bold text-zinc-800">
                         Select Address
                     </h3>

@@ -45,7 +45,7 @@ export const Account = ({
                 <DropdownMenuSeparator/>
                 <DropdownMenuItem
                     className="flex items-center text-zinc-700 font-semibold md:cursor-pointer"
-                    onClick={() => router.push("#")}
+                    onClick={() => router.push("/my/dashboard")}
                 >
                     <User className="mr-3 h-4 w-4"/>
                     Account
