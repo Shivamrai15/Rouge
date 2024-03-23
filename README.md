@@ -7,7 +7,9 @@ Rouge is an online shopping website built with ReactJS and NextJS. It uses the S
 After signing in, users have the ability to create wishlists and add products to them. Additionally, they can easily transfer items from the wishlist directly to the shopping cart. Users also have the option to update the quantity of products in their cart on the dedicated cart page.
 
 
+## **Database Schema**
 
+![prismaliser (1)](https://github.com/Shivamrai15/Rouge/assets/111892135/1ad76d96-440f-4137-9bee-6d58f6e1deab)
 
 
 ## **Web Preview**
